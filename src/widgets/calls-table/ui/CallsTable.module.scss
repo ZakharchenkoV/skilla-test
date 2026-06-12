@@ -1,0 +1,105 @@
+@use '../../../app/styles/variables' as *;
+
+.table-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  background-color: $color-background;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.call-item {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-row-hover;
+  }
+
+  td {
+    border-top: 1px solid $color-border;
+  }
+
+  &__source {
+    color: $color-text-secondary;
+    max-width: 150px;
+  }
+}
+
+th,
+td {
+  padding: 22px 12px;
+  text-align: left;
+  font-weight: 400;
+  vertical-align: middle;
+
+  &:first-child {
+    padding-left: 40px;
+  }
+
+  &:last-child {
+    text-align: right;
+    padding-right: 40px;
+  }
+}
+
+th {
+  color: $color-text-secondary;
+}
+
+td {
+  color: $color-text-primary;
+}
+
+.call-item {
+  td {
+    border-top: 1px solid $color-border;
+  }
+
+  &__source {
+    color: $color-text-secondary;
+    max-width: 150px;
+  }
+}
+
+.text {
+  &-primary {
+    color: $color-text-primary;
+  }
+
+  &-secondary {
+    color: $color-text-secondary;
+  }
+}
+
+.call-img {
+  &.outgoing-success {
+    color: $color-call-outgoing-success;
+  }
+
+  &.incoming-success {
+    color: $color-call-incoming-success;
+  }
+
+  &.fail {
+    color: $color-call-fail;
+  }
+}
+
+.date-separator {
+  padding: 24px 40px 12px;
+  color: $color-text-primary;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left !important;
+}
+
+.date-count {
+  margin-left: 1px;
+  color: $color-text-secondary;
+  font-size: 12px;
+  vertical-align: super;
+}
