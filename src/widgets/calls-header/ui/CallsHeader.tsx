@@ -1,15 +1,17 @@
+import classnames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import ArrowImage from '../../../shared/assets/images/arrow.svg?react';
-import CloseImage from '../../../shared/assets/images/close.svg?react';
+
+import type { CallType } from '@/entities/call';
+import ArrowImage from '@/shared/assets/images/arrow.svg?react';
+import CloseImage from '@/shared/assets/images/close.svg?react';
+
 import styles from './CallsHeader.module.scss';
 import { TypeSelectionModal } from './TypeSelectionModal';
-import classnames from 'classnames';
-import type { CallType } from '../../../pages/calls-page/CallsPage';
 
 interface CallsHeaderProps {
   callType: CallType;
   setCallType: React.Dispatch<React.SetStateAction<CallType>>;
-  callTypesArr: CallType[];
+  callTypesArr: readonly CallType[];
   defaultFilter: CallType;
 }
 
@@ -23,6 +25,10 @@ export const CallsHeader = ({
   const [typesModalOpen, setTypesModalOpen] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
 
+  const onClose = () => {
+    setTypesModalOpen(false);
+  };
+
   const typesOpenModalHandler = () => {
     setTypesModalOpen((prev) => !prev);
   };
@@ -30,7 +36,7 @@ export const CallsHeader = ({
   const resetFilters = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setCallType(defaultFilter);
-    setTypesModalOpen(false);
+    onClose();
   };
 
   useEffect(() => {
@@ -39,7 +45,7 @@ export const CallsHeader = ({
         filterRef.current &&
         !filterRef.current.contains(event.target as Node)
       ) {
-        setTypesModalOpen(false);
+        onClose();
       }
     };
 
@@ -80,9 +86,9 @@ export const CallsHeader = ({
             >
               <TypeSelectionModal
                 callType={callType}
-                setCallType={setCallType}
                 callTypesArr={callTypesArr}
-                setTypesModalOpen={setTypesModalOpen}
+                onSelectType={setCallType}
+                onClose={onClose}
               />
             </div>
           )}

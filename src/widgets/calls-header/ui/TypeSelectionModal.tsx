@@ -1,27 +1,29 @@
-import type { CallType } from '../../../pages/calls-page/CallsPage';
-import styles from './TypeSelectionModal.module.scss';
 import classnames from 'classnames';
+
+import type { CallType } from '@/entities/call';
+
+import styles from './TypeSelectionModal.module.scss';
 
 interface ITypeSelectionModalProps {
   callType: CallType;
-  callTypesArr: CallType[];
-  setCallType: React.Dispatch<React.SetStateAction<CallType>>;
-  setTypesModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  callTypesArr: readonly CallType[];
+  onSelectType: (type: CallType) => void;
+  onClose: () => void;
 }
 
 export const TypeSelectionModal = ({
   callType,
-  setCallType,
+  onSelectType,
   callTypesArr,
-  setTypesModalOpen,
+  onClose,
 }: ITypeSelectionModalProps) => {
   const handleTypeSelect = (
     e: React.MouseEvent<HTMLDivElement>,
     type: CallType,
   ) => {
     e.stopPropagation();
-    setCallType(type);
-    setTypesModalOpen(false);
+    onSelectType(type);
+    onClose();
   };
 
   return (
