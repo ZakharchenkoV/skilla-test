@@ -1,8 +1,10 @@
 @use '../../../app/styles/variables' as *;
+@use '../../../app/styles/typography' as *;
 
 .table-wrapper {
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0px 4px 5px 0px #e9edf3;
 }
 
 table {
@@ -33,7 +35,6 @@ th,
 td {
   padding: 22px 12px;
   text-align: left;
-  font-weight: 400;
   vertical-align: middle;
 
   &:first-child {
@@ -48,10 +49,12 @@ td {
 
 th {
   color: $color-text-secondary;
+  @include body-m;
 }
 
 td {
   color: $color-text-primary;
+  @include body-l;
 }
 
 .call-item {
@@ -92,9 +95,8 @@ td {
 .date-separator {
   padding: 24px 40px 12px;
   color: $color-text-primary;
-  font-size: 15px;
-  font-weight: 400;
   text-align: left !important;
+  @include body-l;
 }
 
 .date-count {
