@@ -12,6 +12,7 @@ table {
   background-color: $color-background;
   border-collapse: separate;
   border-spacing: 0;
+  // table-layout: auto;
 }
 
 .call-item {
@@ -33,7 +34,7 @@ table {
 
 th,
 td {
-  padding: 22px 12px;
+  height: 65px;
   text-align: left;
   vertical-align: middle;
 

@@ -10,15 +10,26 @@ import CallIncomingIcon from '../../../shared/assets/images/call-incoming.svg?re
 import CallOutgoingIcon from '../../../shared/assets/images/call-outgoing.svg?react';
 
 import styles from './CallsTable.module.scss';
+import type { CallType } from '../../../pages/calls-page/CallsPage';
 
 interface CallsTableProps {
   data?: ICallsResponse;
+  callType: CallType;
 }
 
-export const CallsTable = ({ data }: CallsTableProps) => {
+export const CallsTable = ({ data, callType }: CallsTableProps) => {
+  const results = data?.results ?? [];
+
+  const filteredCalls =
+    callType === 'Входящие'
+      ? results.filter((call) => call.in_out === 1)
+      : callType === 'Исходящие'
+        ? results.filter((call) => call.in_out === 0)
+        : results;
+
   const groupedCalls = useMemo(
     () =>
-      data?.results.reduce(
+      filteredCalls.reduce(
         (acc, call) => {
           const date = call.date_notime;
 
@@ -32,7 +43,7 @@ export const CallsTable = ({ data }: CallsTableProps) => {
         },
         {} as Record<string, ICall[]>,
       ) ?? {},
-    [data?.results],
+    [filteredCalls],
   );
 
   const sortedGroups = useMemo(
@@ -62,12 +73,14 @@ export const CallsTable = ({ data }: CallsTableProps) => {
         <tbody>
           {sortedGroups.map(([date, calls]) => (
             <Fragment key={date}>
-              <tr>
-                <td colSpan={7} className={styles['date-separator']}>
-                  {getDateLabel(date)}
-                  <span className={styles['date-count']}>{calls.length}</span>
-                </td>
-              </tr>
+              {getDateLabel(date) !== 'Сегодня' && (
+                <tr>
+                  <td colSpan={7} className={styles['date-separator']}>
+                    {getDateLabel(date)}
+                    <span className={styles['date-count']}>{calls.length}</span>
+                  </td>
+                </tr>
+              )}
 
               {calls.map((call) => (
                 <tr key={call.id} className={styles['call-item']}>
