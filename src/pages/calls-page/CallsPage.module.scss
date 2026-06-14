@@ -3,4 +3,7 @@
 .calls-page-wrapper {
   background-color: $color-wrapper-background;
   padding: 80px 240px 120px 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }

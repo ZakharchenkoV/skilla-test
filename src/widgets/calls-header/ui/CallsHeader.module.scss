@@ -1,0 +1,49 @@
+@use '../../../app/styles//variables' as *;
+@use '../../../app/styles/typography' as *;
+
+.calls-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .header-left {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  .header-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    color: $color-text-secondary;
+    gap: 4px;
+    cursor: pointer;
+    @include body-m;
+
+    &.multi {
+      gap: 4px;
+    }
+  }
+
+  .types-modal {
+    position: absolute;
+    top: 25px;
+    left: 0;
+  }
+}
+
+.active {
+  color: $color-current-type;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+  color: $color-arrow-closed;
+}
+
+.arrow-open {
+  transform: rotate(180deg);
+  color: $color-call-incoming-success;
+}
