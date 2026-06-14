@@ -101,3 +101,5 @@ export interface ICallsResponse {
 export interface GetCallsParams {
   limit: number;
 }
+
+export type CallType = 'Все типы' | 'Входящие' | 'Исходящие';

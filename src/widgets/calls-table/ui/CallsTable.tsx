@@ -1,16 +1,18 @@
-import { Fragment, useMemo } from 'react';
 import classnames from 'classnames';
+import { Fragment, useMemo } from 'react';
 
-import type { ICall, ICallsResponse } from '../../../entities/call/model/types';
-import { formatDuration } from '../../../shared/lib/formatDuration';
-import { getDateLabel } from '../../../shared/lib/date/getDateLabel';
-
-import avatarPlaceholder from '../../../shared/assets/images/avatar-placeholder.svg';
-import CallIncomingIcon from '../../../shared/assets/images/call-incoming.svg?react';
-import CallOutgoingIcon from '../../../shared/assets/images/call-outgoing.svg?react';
+import type {
+  CallType,
+  ICall,
+  ICallsResponse,
+} from '@/entities/call/model/types';
+import AvatarPlaceholder from '@/shared/assets/images/avatar-placeholder.svg?react';
+import CallIncomingIcon from '@/shared/assets/images/call-incoming.svg?react';
+import CallOutgoingIcon from '@/shared/assets/images/call-outgoing.svg?react';
+import { getDateLabel } from '@/shared/lib/date/getDateLabel';
+import { formatDuration } from '@/shared/lib/formatDuration';
 
 import styles from './CallsTable.module.scss';
-import type { CallType } from '../../../pages/calls-page/CallsPage';
 
 interface CallsTableProps {
   data?: ICallsResponse;
@@ -109,12 +111,16 @@ export const CallsTable = ({ data, callType }: CallsTableProps) => {
                   </td>
 
                   <td>
-                    <img
-                      src={call.person_avatar || avatarPlaceholder}
-                      alt={call.person_name}
-                      width={32}
-                      height={32}
-                    />
+                    {call.person_avatar ? (
+                      <img
+                        src={call.person_avatar}
+                        alt={call.person_name}
+                        width={32}
+                        height={32}
+                      />
+                    ) : (
+                      <AvatarPlaceholder />
+                    )}
                   </td>
 
                   <td>

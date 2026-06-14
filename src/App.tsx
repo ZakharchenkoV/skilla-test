@@ -1,4 +1,4 @@
-import { CallsPage } from './pages/calls-page/CallsPage';
+import { CallsPage } from '@/pages/calls-page/CallsPage';
 
 function App() {
   return <CallsPage />;

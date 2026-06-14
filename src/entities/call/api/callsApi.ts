@@ -1,4 +1,5 @@
-import { baseApi } from '../../../shared';
+import { baseApi } from '@/shared';
+
 import type { GetCallsParams, ICallsResponse } from '../model/types';
 
 export const callsApi = baseApi.injectEndpoints({
