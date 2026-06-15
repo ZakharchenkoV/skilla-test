@@ -56,6 +56,15 @@ export const CallsTable = ({ data, callType }: CallsTableProps) => {
   return (
     <div className={styles['table-wrapper']}>
       <table>
+        <colgroup>
+          <col style={{ width: '7%' }} />
+          <col style={{ width: '7%' }} />
+          <col style={{ width: '10%' }} />
+          <col style={{ width: '18%' }} />
+          <col style={{ width: '20%' }} />
+          <col style={{ width: '8%' }} />
+          <col style={{ width: '30%' }} />
+        </colgroup>
         <thead>
           <tr>
             <th>Тип</th>

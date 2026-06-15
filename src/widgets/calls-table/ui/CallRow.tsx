@@ -64,24 +64,26 @@ export const CallRow = ({ call }: ICallPlayProps) => {
         </div>
       </td>
 
-      <td className={styles['call-row__source']}>{call.source || ''}</td>
+      <td className={styles['call-row__source']}>{call.source}</td>
 
       <td />
 
       <td className={styles['call-row__duration']}>
-        <PlayIcon
-          className={classnames({
-            [styles.disabled]: !call.record,
-          })}
-          onClick={() => {
-            if (!call.record) return;
+        <div className={styles['call-row__duration-content']}>
+          <PlayIcon
+            className={classnames({
+              [styles.disabled]: !call.record,
+            })}
+            onClick={() => {
+              if (!call.record) return;
 
-            playRecord(call);
-          }}
-        />
-        <p className={styles['call-row__duration-value']}>
-          {formatDuration(call.time)}
-        </p>
+              playRecord(call);
+            }}
+          />
+          <p className={styles['call-row__duration-value']}>
+            {formatDuration(call.time)}
+          </p>
+        </div>
       </td>
     </tr>
   );

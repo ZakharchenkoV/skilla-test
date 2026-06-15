@@ -101,8 +101,6 @@ export const CallsHeader = ({
           </div>
         )}
       </div>
-
-      <div className={styles['header-item']}>DaysFilter</div>
     </div>
   );
 };
