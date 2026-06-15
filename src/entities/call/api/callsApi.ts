@@ -1,6 +1,10 @@
 import { baseApi } from '@/shared';
 
-import type { GetCallsParams, ICallsResponse } from '../model/types';
+import type {
+  GetCallsParams,
+  GetRecordParams,
+  ICallsResponse,
+} from '../model/types';
 
 export const callsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,7 +15,18 @@ export const callsApi = baseApi.injectEndpoints({
         body: params,
       }),
     }),
+    getRecord: builder.mutation<Blob, GetRecordParams>({
+      query: ({ record, partnershipId }) => ({
+        url: '/mango/getRecord',
+        method: 'POST',
+        params: {
+          record,
+          partnership_id: partnershipId,
+        },
+        // responseHandler: (response) => response.blob(),
+      }),
+    }),
   }),
 });
 
-export const { useGetCallsQuery } = callsApi;
+export const { useGetCallsQuery, useGetRecordMutation } = callsApi;

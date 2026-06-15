@@ -1,6 +1,7 @@
 @use '@/app/styles/variables' as *;
 
 .calls-page-wrapper {
+  min-height: 100vh;
   background-color: $color-wrapper-background;
   padding: 80px 240px 120px 240px;
   display: flex;

@@ -102,4 +102,9 @@ export interface GetCallsParams {
   limit: number;
 }
 
+export interface GetRecordParams {
+  record: string;
+  partnershipId: string;
+}
+
 export type CallType = 'Все типы' | 'Входящие' | 'Исходящие';

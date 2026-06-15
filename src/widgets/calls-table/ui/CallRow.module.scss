@@ -1,0 +1,65 @@
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/typography' as *;
+
+.call-row {
+  cursor: pointer;
+
+  td {
+    border-top: 1px solid $color-border;
+  }
+
+  &__source {
+    color: $color-text-secondary;
+    max-width: 150px;
+  }
+
+  &__duration {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    &-value {
+      display: flex;
+      justify-content: center;
+      min-width: 40px;
+    }
+  }
+
+  &__contact-name {
+    color: $color-text-primary;
+  }
+
+  &__contact-number {
+    color: $color-text-secondary;
+  }
+
+  &:hover {
+    background-color: $color-row-hover;
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.call-img {
+  &.outgoing-success {
+    color: $color-call-outgoing-success;
+  }
+
+  &.incoming-success {
+    color: $color-call-incoming-success;
+  }
+
+  &.fail {
+    color: $color-call-fail;
+  }
+}
