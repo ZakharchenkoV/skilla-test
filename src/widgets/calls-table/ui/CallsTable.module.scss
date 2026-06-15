@@ -12,24 +12,6 @@ table {
   background-color: $color-background;
   border-collapse: separate;
   border-spacing: 0;
-  // table-layout: auto;
-}
-
-.call-item {
-  cursor: pointer;
-
-  &:hover {
-    background-color: $color-row-hover;
-  }
-
-  td {
-    border-top: 1px solid $color-border;
-  }
-
-  &__source {
-    color: $color-text-secondary;
-    max-width: 150px;
-  }
 }
 
 th,
@@ -43,13 +25,14 @@ td {
   }
 
   &:last-child {
-    text-align: right;
     padding-right: 40px;
+    text-align: right;
   }
 }
 
 th {
   color: $color-text-secondary;
+  opacity: 87%;
   @include body-m;
 }
 
@@ -58,51 +41,16 @@ td {
   @include body-l;
 }
 
-.call-item {
-  td {
-    border-top: 1px solid $color-border;
-  }
-
-  &__source {
-    color: $color-text-secondary;
-    max-width: 150px;
-  }
-}
-
-.text {
-  &-primary {
-    color: $color-text-primary;
-  }
-
-  &-secondary {
-    color: $color-text-secondary;
-  }
-}
-
-.call-img {
-  &.outgoing-success {
-    color: $color-call-outgoing-success;
-  }
-
-  &.incoming-success {
-    color: $color-call-incoming-success;
-  }
-
-  &.fail {
-    color: $color-call-fail;
-  }
-}
-
 .date-separator {
   padding: 24px 40px 12px;
   color: $color-text-primary;
   text-align: left !important;
   @include body-l;
-}
 
-.date-count {
-  margin-left: 1px;
-  color: $color-text-secondary;
-  font-size: 12px;
-  vertical-align: super;
+  .date-count {
+    margin-left: 1px;
+    color: $color-text-secondary;
+    font-size: 12px;
+    vertical-align: super;
+  }
 }

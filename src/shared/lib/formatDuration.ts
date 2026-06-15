@@ -1,6 +1,7 @@
 export const formatDuration = (seconds: number): string => {
-  if (seconds > 24 * 60 * 60) {
-    return '';
+  const daySeconds = 24 * 60 * 60;
+  if (seconds > daySeconds) {
+    return '—';
   }
 
   const hours = Math.floor(seconds / 3600);

@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import { Fragment, useMemo } from 'react';
 
 import type {
@@ -6,12 +5,9 @@ import type {
   ICall,
   ICallsResponse,
 } from '@/entities/call/model/types';
-import AvatarPlaceholder from '@/shared/assets/images/avatar-placeholder.svg?react';
-import CallIncomingIcon from '@/shared/assets/images/call-incoming.svg?react';
-import CallOutgoingIcon from '@/shared/assets/images/call-outgoing.svg?react';
 import { getDateLabel } from '@/shared/lib/date/getDateLabel';
-import { formatDuration } from '@/shared/lib/formatDuration';
 
+import { CallRow } from './CallRow';
 import styles from './CallsTable.module.scss';
 
 interface CallsTableProps {
@@ -83,70 +79,8 @@ export const CallsTable = ({ data, callType }: CallsTableProps) => {
                   </td>
                 </tr>
               )}
-
               {calls.map((call) => (
-                <tr key={call.id} className={styles['call-item']}>
-                  <td>
-                    {call.in_out === 0 ? (
-                      <CallOutgoingIcon
-                        className={classnames(styles['call-img'], {
-                          [styles['outgoing-success']]:
-                            call.status === 'Дозвонился',
-                          [styles['fail']]: call.status === 'Не дозвонился',
-                        })}
-                      />
-                    ) : (
-                      <CallIncomingIcon
-                        className={classnames(styles['call-img'], {
-                          [styles['incoming-success']]:
-                            call.status === 'Дозвонился',
-                          [styles['fail']]: call.status === 'Не дозвонился',
-                        })}
-                      />
-                    )}
-                  </td>
-
-                  <td>
-                    {call.date ? call.date.split(' ')[1].slice(0, 5) : ''}
-                  </td>
-
-                  <td>
-                    {call.person_avatar ? (
-                      <img
-                        src={call.person_avatar}
-                        alt={call.person_name}
-                        width={32}
-                        height={32}
-                      />
-                    ) : (
-                      <AvatarPlaceholder />
-                    )}
-                  </td>
-
-                  <td>
-                    {call.contact_name && (
-                      <div className={styles['text-primary']}>
-                        {call.contact_name}
-                      </div>
-                    )}
-
-                    <div
-                      className={
-                        call.contact_name ? styles['text-secondary'] : ''
-                      }
-                    >
-                      {call.in_out === 0 ? call.to_number : call.from_number}
-                    </div>
-                  </td>
-
-                  <td className={styles['call-item__source']}>
-                    {call.source || ''}
-                  </td>
-
-                  <td />
-
-                  <td>{formatDuration(call.time)}</td>
-                </tr>
+                <CallRow key={call.id} call={call} />
               ))}
             </Fragment>
           ))}
