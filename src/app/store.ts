@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { callsApi } from '../entities/call';
 
 export const store = configureStore({
